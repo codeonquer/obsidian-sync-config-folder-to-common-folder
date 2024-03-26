@@ -30,7 +30,12 @@ export class SyncPlugin extends Plugin {
 
 		if (this.settings.autoSaveInterval) {
 			// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
-			this.registerInterval(window.setInterval(() => console.log('setInterval'), this.settings.autoSaveInterval * 1000));
+			this.registerInterval(window.setInterval(
+                () => {
+                    new SyncModal(this.app, SyncModel.None, this).syncConfig();
+                },
+                this.settings.autoSaveInterval * 1000
+            ));
 		}
 	}
 

@@ -1,4 +1,4 @@
-import { App, Modal } from 'obsidian';
+import { App, Modal, Notice } from 'obsidian';
 
 import { SyncPlugin } from './SyncPlugin';
 
@@ -52,19 +52,43 @@ export class SyncModal extends Modal {
 	logNormal (text: string, contentEl?: HTMLElement, ) {
 		if (contentEl) {
 			contentEl.createDiv({ text })
-		}
+		} else {
+            new Notice(text, 3000);
+        }
 	}
 
 	logSuccess (text: string, contentEl?: HTMLElement) {
 		if (contentEl) {
 			contentEl.createDiv({ text, attr: { style: 'color: green;' } })
-		}
+		} else {
+            const fragment = document.createDocumentFragment();
+            fragment.appendChild(
+                fragment.createSpan({
+                    text,
+                    attr: {
+                        style: 'color: green;'
+                    }
+                })
+            );
+            new Notice(fragment, 3000);
+        }
 	}
 
 	logFail (text: string, contentEl?: HTMLElement) {
 		if (contentEl) {
 			contentEl.createDiv({ text, attr: { style: 'color: red;' } })
-		}
+		} else {
+            const fragment = document.createDocumentFragment();
+            fragment.appendChild(
+                fragment.createSpan({
+                    text,
+                    attr: {
+                        style: 'color: red;'
+                    }
+                })
+            );
+            new Notice(fragment, 0);
+        }
 	}
 
 	syncConfig(contentEl?: HTMLElement) {
