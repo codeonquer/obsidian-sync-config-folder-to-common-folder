@@ -12,7 +12,7 @@ export class SyncPlugin extends Plugin {
 
 		this.addCommand({
 			id: 'sync-config-folder-to-common-folder',
-			name: 'Sync ConfigFolder to CommonFolder',
+			name: 'Sync',
 			callback: () => {
 				new SyncModal(this.app, SyncModel.Sync, this).open();
 			}
@@ -20,7 +20,7 @@ export class SyncPlugin extends Plugin {
 
 		this.addCommand({
 			id: 'restore-config-folder-from-common-folder',
-			name: 'Restore ConfigFolder from CommonFolder',
+			name: 'Restore',
 			callback: () => {
 				new SyncModal(this.app, SyncModel.Restore, this).open();
 			}

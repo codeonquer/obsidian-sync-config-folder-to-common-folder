@@ -1,10 +1,10 @@
 {
 	"id": "sync-config-folder-to-common-folder",
 	"name": "Sync ConfigFolder to CommonFolder",
-    "description": "Sync ConfigFolder to CommonFolder",
-	"author": "Codeonquer",
+	"description": "Sync ConfigFolder to CommonFolder",
+	"author": "codeonquer",
 	"authorUrl": "https://github.com/codeonquer",
 	"isDesktopOnly": true,
-    "version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0"
 }
