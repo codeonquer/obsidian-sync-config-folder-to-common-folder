@@ -45,13 +45,10 @@ export class SyncPlugin extends Plugin {
 
 	async loadSettings() {
 		const originData = await this.loadData();
-		console.log('sync-config-folder-to-common-folder loadData ', originData);
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, originData);
-		console.log('sync-config-folder-to-common-folder loadSettings ', this.settings);
 	}
 
 	async saveSettings() {
-		console.log('sync-config-folder-to-common-folder saveData ', this.settings);
 		await this.saveData(this.settings);
 	}
 }

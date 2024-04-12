@@ -1,7 +1,7 @@
 {
 	"name": "obsidian-sync-config-folder-to-common-folder",
-	"version": "1.0.1",
-	"description": "Obsidian Sync ConfigFolder to CommonFolder",
+	"version": "1.0.2",
+	"description": "Sync contents from config folder to common folder for backup or other purposes",
 	"keywords": [],
 	"author": "codeonquer",
 	"repository": {
