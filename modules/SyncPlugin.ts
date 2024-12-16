@@ -5,50 +5,50 @@ import { SyncModal, SyncModel } from './SyncModal';
 import { SyncSettingTab } from './SyncSettingTab';
 
 export class SyncPlugin extends Plugin {
-	settings: ISyncPluginSettings;
+    settings: ISyncPluginSettings;
 
-	async onload() {
-		await this.loadSettings();
+    async onload() {
+        await this.loadSettings();
 
-		this.addCommand({
-			id: 'sync-config-folder-to-common-folder',
-			name: 'Sync',
-			callback: () => {
-				new SyncModal(this.app, SyncModel.Sync, this).open();
-			}
-		});
+        this.addCommand({
+            id: 'sync-config-folder-to-common-folder',
+            name: 'Sync',
+            callback: () => {
+                new SyncModal(this.app, SyncModel.Sync, this).open();
+            }
+        });
 
-		this.addCommand({
-			id: 'restore-config-folder-from-common-folder',
-			name: 'Restore',
-			callback: () => {
-				new SyncModal(this.app, SyncModel.Restore, this).open();
-			}
-		});
+        this.addCommand({
+            id: 'restore-config-folder-from-common-folder',
+            name: 'Restore',
+            callback: () => {
+                new SyncModal(this.app, SyncModel.Restore, this).open();
+            }
+        });
 
-		this.addSettingTab(new SyncSettingTab(this.app, this));
+        this.addSettingTab(new SyncSettingTab(this.app, this));
 
-		if (this.settings.autoSaveInterval) {
-			// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
-			this.registerInterval(window.setInterval(
+        if (this.settings.autoSaveInterval) {
+            // When registering intervals, this function will automatically clear the interval when the plugin is disabled.
+            this.registerInterval(window.setInterval(
                 () => {
                     new SyncModal(this.app, SyncModel.None, this).syncConfig();
                 },
                 this.settings.autoSaveInterval * 1000
             ));
-		}
-	}
+        }
+    }
 
-	onunload() {
+    onunload() {
 
-	}
+    }
 
-	async loadSettings() {
-		const originData = await this.loadData();
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, originData);
-	}
+    async loadSettings() {
+        const originData = await this.loadData();
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, originData);
+    }
 
-	async saveSettings() {
-		await this.saveData(this.settings);
-	}
+    async saveSettings() {
+        await this.saveData(this.settings);
+    }
 }
